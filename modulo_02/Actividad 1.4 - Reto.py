@@ -12,6 +12,7 @@ def reves(my_num):
 
 
 num = input("Introduce un numero: ")
+print(num[::-1])
 print(type(num))
 reves(num)
 
