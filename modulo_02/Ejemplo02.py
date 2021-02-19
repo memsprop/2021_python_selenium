@@ -9,6 +9,7 @@ gmail_link = driver.find_element_by_link_text('Gmail')
 print(f'Gmail link is displayed: {gmail_link.is_displayed()}')
 print(f'Gmail link is enabled: {gmail_link.is_enabled()}')
 print(f'Gmail link is selected: {gmail_link.is_selected()}')
+print(gmail_link.is_enabled())
 if gmail_link.is_enabled() and gmail_link.is_displayed():
     gmail_link.click()
 

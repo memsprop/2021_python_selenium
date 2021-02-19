@@ -8,23 +8,23 @@ driver.get('https://formsmarts.com/html-form-example')
 
 driver.switch_to.frame(driver.find_element_by_class_name('fs_embed'))
 
-my_name = driver.find_element_by_xpath('//*[@id="u_dcR_4607"]')
+my_name = driver.find_element_by_xpath('/html/body/div/form/input[6]')
 my_name.clear()
 my_name.send_keys(forms_fields[0])
 
-my_last_name = driver.find_element_by_xpath('//*[@id="u_dcR_338354"]')
+my_last_name = driver.find_element_by_xpath('/html/body/div/form/input[7]')
 my_last_name.clear()
 my_last_name.send_keys(forms_fields[1])
 
-my_email = driver.find_element_by_xpath('//*[@id="u_dcR_4608"]')
+my_email = driver.find_element_by_xpath('/html/body/div/form/input[8]')
 my_email.clear()
 my_email.send_keys(forms_fields[2])
 
-my_comment = driver.find_element_by_xpath('//*[@id="u_dcR_4609"]')
+my_comment = driver.find_element_by_xpath('/html/body/div/form/textarea')
 my_comment.clear()
 my_comment.send_keys(forms_fields[3])
 
-my_inquiry = driver.find_element_by_xpath('//*[@id="u_dcR_338367"]')
+my_inquiry = driver.find_element_by_xpath('/html/body/div/form/select')
 dropdown = Select(my_inquiry)
 dropdown.select_by_value(forms_fields[4])
 
