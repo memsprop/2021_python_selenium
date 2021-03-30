@@ -9,4 +9,4 @@ class InventoryItemLoc:
     TITLE = (By.CLASS_NAME, 'inventory_item_name')
     DESCRIPTION = (By.CLASS_NAME, 'inventory_item_desc')
     PRICE = (By.CLASS_NAME, 'inventory_item_price')
-    BTN = (By.XPATH, ".//button[contains(@class,'btn_inventory')")
+    BTN = (By.XPATH, ".//button[contains(@class,'btn_inventory')]")

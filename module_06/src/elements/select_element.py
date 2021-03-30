@@ -1,3 +1,4 @@
+
 """Select element."""
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.select import Select
@@ -14,3 +15,11 @@ class SelectElement(BasePageElement):
         """Get instance of select."""
         element = self.wait_until_loaded()
         return Select(element)
+
+    def select_by_value(self, option):
+        """Select by value."""
+        self.get_select_instance().select_by_value(option)
+
+    def get_selected_value(self):
+        """Get selected value."""
+        self.get_select_instance().first_selected_option.get_attribute('value')
