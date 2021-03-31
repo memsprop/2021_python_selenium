@@ -46,7 +46,7 @@ class TestInventory(TestBase):
             inventory.sort_by(option)
             inventory.get_sort_value() == option.value, f'Default sort should be {option.value}'
 
-    def test_sort_price_lh(self):
+    def test_sort_price_lh(self): #SAUCE-LAB-8
         """Test sort products"""
         login = LoginPage(self.driver)
         login.open()
@@ -62,7 +62,7 @@ class TestInventory(TestBase):
             print(item.get_price())
             print('*' * 80)
 
-    def test_sort_price_hl(self):
+    def test_sort_price_hl(self): #SAUCE-LAB-9
         """Test sort products"""
         login = LoginPage(self.driver)
         login.open()
@@ -78,7 +78,7 @@ class TestInventory(TestBase):
             print(item.get_price())
             print('*' * 80)
 
-    def test_sort_price_za(self):
+    def test_sort_price_za(self): #SAUCE-LAB-10
         """Test sort products"""
         login = LoginPage(self.driver)
         login.open()

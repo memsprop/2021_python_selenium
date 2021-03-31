@@ -8,5 +8,8 @@ class CartLoc:
     """
 
     CART_LST = (By.CLASS_NAME, 'cart_list')
-    CHECKOUT_BTN = (By.CLASS_NAME, 'btn_action checkout_button')
-    CONTINUE_SHOPPING_BTN = (By.CLASS_NAME, 'btn_secondary')
+    CHECKOUT_BTN = (By.XPATH, "//*[@class='cart_footer']/a[contains(@class,'btn_action')]")
+    CONTINUE_SHOPPING_BTN = (By.XPATH, "//*[@class='cart_footer']/a[contains(@class,'btn_secondary')]")
+
+
+
