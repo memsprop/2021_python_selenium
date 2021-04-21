@@ -12,12 +12,11 @@ class BasePage:
     __MIN_TIMEOUT = 0
 
     """Base page for all page objects."""
-
-    def __init__(self, driver: WebDriver, url: str = None, timeout: int = 5):
+    def __init__(self, driver: WebDriver, url: str = None, timeout: int = 10):
         self._driver = driver
         self._url = url
         self._wait = WebDriverWait(self._driver, timeout)
-        self._timeout = timeout
+        self.timeout = timeout
 
     def open(self):
         """Open page in browser."""

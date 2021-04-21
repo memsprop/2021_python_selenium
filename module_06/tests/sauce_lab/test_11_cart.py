@@ -13,7 +13,7 @@ VALID_PRICES = ['$29.99', '$9.99', '$15.99', '$49.99', '$7.99', '$15.99']
 
 class TestCart(TestBase):
 
-    def test_checkout_continue_shopping(self): #SAUCE-LAB-11
+    def test_checkout_continue_shopping(self): #SAUCE-LAB-12
         """Test add to cart first item"""
         login = LoginPage(self.driver)
         login.open()
@@ -28,7 +28,7 @@ class TestCart(TestBase):
         inventory_page.products.reload()
         assert len(inventory_page.products) == 6, 'Inventor len should be 6'
 
-    def test_cancel_checkout_item(self): #SAUCE-LAB-12
+    def test_cancel_checkout_item(self): #SAUCE-LAB-13
         """Test add to cart first item"""
         login = LoginPage(self.driver)
         login.open()

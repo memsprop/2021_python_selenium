@@ -34,7 +34,7 @@ class TestInventory(TestBase):
         login = LoginPage(self.driver)
         login.open()
         inventory = login.login(_DEF_USER, _DEF_PASSWORD)
-        assert inventory.get_label() == 'Products', 'Inventory page label should be Products'
+        assert inventory.get_label() == 'PRODUCTS', 'Inventory page label should be Products'
 
     def test_sort(self):
         """Test sort products"""
@@ -46,7 +46,70 @@ class TestInventory(TestBase):
             inventory.sort_by(option)
             inventory.get_sort_value() == option.value, f'Default sort should be {option.value}'
 
-    def test_sort_price_lh(self): #SAUCE-LAB-8
+    def test_add_and_remove_two_items(self):
+        """Test adding and removing items from main page"""
+        login = LoginPage(self.driver) #SAUCE-LAB-5
+        login.open()
+        inventory_page = login.login(_DEF_USER, _DEF_PASSWORD)
+        first_item = inventory_page.products[0]
+        first_item: InventoryItem
+        first_item.add_to_cart()
+        print('\n')
+        print(first_item.get_title())
+        print(first_item.get_description())
+        print(first_item.get_price())
+        print('*' * 80)
+        second_item = inventory_page.products[4]
+        second_item: InventoryItem
+        second_item.add_to_cart()
+        print('\n')
+        print(second_item.get_title())
+        print(second_item.get_description())
+        print(second_item.get_price())
+        print('*' * 80)
+        first_item.remove_from_cart()
+        second_item.remove_from_cart()
+        print(f'Products {first_item.get_title()} and {second_item.get_title()} were successfully removed')
+
+    def test_add_all(self): #SAUCE-LAB-7
+        """Test add to cart all item"""
+        login = LoginPage(self.driver)
+        login.open()
+        inventory_page = login.login(_DEF_USER, _DEF_PASSWORD)
+        first_item = inventory_page.products
+        first_item: InventoryItem
+        for item in first_item:
+            item.add_to_cart()
+        if inventory_page.header.get_total_cart_items() == 6:
+            print('\n')
+            print(f'Total of products {inventory_page.header.get_total_cart_items()}')
+        else:
+            print('\n')
+            print('Not all items were added')
+
+    def test_remove_all(self): #SAUCE-LAB-8
+        """Test add to cart all item"""
+        login = LoginPage(self.driver)
+        login.open()
+        inventory_page = login.login(_DEF_USER, _DEF_PASSWORD)
+        first_item = inventory_page.products
+        first_item: InventoryItem
+        for item in first_item:
+            item.add_to_cart()
+        if inventory_page.header.get_total_cart_items() == 6:
+            print('\n')
+            print(f'Total of products {inventory_page.header.get_total_cart_items()}')
+        else:
+            print('Not all items were added')
+        for item in first_item:
+            item.remove_from_cart()
+        if inventory_page.header.get_total_cart_items() == 0:
+            print('\n')
+            print(f'Total of products {inventory_page.header.get_total_cart_items()}')
+        else:
+            print('Not all items were removed')
+
+    def test_sort_price_lh(self): #SAUCE-LAB-9
         """Test sort products"""
         login = LoginPage(self.driver)
         login.open()
@@ -62,7 +125,7 @@ class TestInventory(TestBase):
             print(item.get_price())
             print('*' * 80)
 
-    def test_sort_price_hl(self): #SAUCE-LAB-9
+    def test_sort_price_hl(self): #SAUCE-LAB-10
         """Test sort products"""
         login = LoginPage(self.driver)
         login.open()
@@ -78,7 +141,7 @@ class TestInventory(TestBase):
             print(item.get_price())
             print('*' * 80)
 
-    def test_sort_price_za(self): #SAUCE-LAB-10
+    def test_sort_price_za(self): #SAUCE-LAB-11
         """Test sort products"""
         login = LoginPage(self.driver)
         login.open()
@@ -99,3 +162,4 @@ class TestInventory(TestBase):
             print(item.get_description())
             print(item.get_price())
             print('*' * 80)
+

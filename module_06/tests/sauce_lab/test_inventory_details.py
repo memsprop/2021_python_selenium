@@ -14,7 +14,7 @@ class TestInventoryDetails(TestBase):
 
     def test_inventory_details(self):
         """Test inventory prices"""
-        login = LoginPage(self.driver)
+        login = LoginPage(self.driver) #SAUCE-LAB-6
         login.open()
         inventory_page = login.login(_DEF_USER, _DEF_PASSWORD)
         first_item = inventory_page.products[0]
@@ -26,6 +26,34 @@ class TestInventoryDetails(TestBase):
         details_page.add_to_cart()
         print(f'Total elements in cart: {details_page.header.get_total_cart_items()}')
         details_page.remove_from_cart()
+        details_page.back()
+        inventory_page.products.reload()
+        assert len(inventory_page.products) == 6, 'Inventor len should be 6'
+
+    def test_add_from_details(self):
+        """Test inventory prices"""
+        login = LoginPage(self.driver) #SAUCE-LAB-14
+        login.open()
+        inventory_page = login.login(_DEF_USER, _DEF_PASSWORD)
+        first_item = inventory_page.products[2]
+        first_item: InventoryItem
+        details_page = first_item.open_details()
+        print(f'Title: {details_page.get_title()}')
+        print(f'Description: {details_page.get_description()}')
+        print(f'Price: {details_page.get_price()}')
+        details_page.add_to_cart()
+        print(f'Total elements in cart: {details_page.header.get_total_cart_items()}')
+        details_page.back()
+        inventory_page.products.reload()
+        assert len(inventory_page.products) == 6, 'Inventor len should be 6'
+        second_item = inventory_page.products[4]
+        second_item: InventoryItem
+        details_page = second_item.open_details()
+        print(f'Title: {details_page.get_title()}')
+        print(f'Description: {details_page.get_description()}')
+        print(f'Price: {details_page.get_price()}')
+        details_page.add_to_cart()
+        print(f'Total elements in cart: {details_page.header.get_total_cart_items()}')
         details_page.back()
         inventory_page.products.reload()
         assert len(inventory_page.products) == 6, 'Inventor len should be 6'

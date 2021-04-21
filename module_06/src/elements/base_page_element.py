@@ -6,7 +6,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class BasePageElement:
     """Represents any input text element."""
-    def __init__(self, loc: tuple, wait: WebDriverWait, root: WebElement = None):
+
+    def __init__(self, loc: tuple, wait: WebDriverWait = None, root: WebElement = None):
         self._wait = wait
         self._loc = loc
         self._root = root
