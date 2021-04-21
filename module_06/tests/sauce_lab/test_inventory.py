@@ -30,7 +30,7 @@ class TestInventory(TestBase):
             print('*' * 80)
 
     def test_label(self):
-        """Test production label."""
+        """Test label. SAUCE-LAB-15"""
         login = LoginPage(self.driver)
         login.open()
         inventory = login.login(_DEF_USER, _DEF_PASSWORD)

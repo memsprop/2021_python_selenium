@@ -14,7 +14,7 @@ _DEF_USER = 'standard_user'
 _DEF_PASSWORD = 'secret_sauce'
 
 ERROR_MSG = 'Epic sadface: Username and password do not match any user in this service'
-
+ERROR_LOCKED = 'Epic sadface: Sorry, this user has been locked out.'
 
 class TestLogin(TestBase):
 
@@ -38,6 +38,7 @@ class TestLogin(TestBase):
         assert error_msg is not None, 'Error message should be displayed for invalid login'
         assert error_msg == ERROR_MSG, f'Error message should be {ERROR_MSG}'
 
+
     def test_login_logout(self):
         """SAUCE-LAB-3"""
         login = LoginPage(self.driver)
@@ -47,3 +48,12 @@ class TestLogin(TestBase):
         inventory_page.header.logout()
         print('\n')
         print('LOGOUT Successfully')
+
+    def test_locked_user(self):
+        """SAUCE-LAB-4 Locked user"""
+        page = LoginPage(self.driver)
+        page.open()
+        page.login('locked_out_user', 'secret_sauce')
+        error_msg = page.get_error_message()
+        assert error_msg is not None, 'Error message should be displayed for locked user'
+        assert error_msg == ERROR_LOCKED, f'Error message should be {ERROR_LOCKED}'

@@ -1,0 +1,7 @@
+GIT COMMANDS
+
+cd /Users/propelicsgdl/2021_python_selenium
+git status
+git add --all
+git commit -m "Add new files"
+git push origin main
